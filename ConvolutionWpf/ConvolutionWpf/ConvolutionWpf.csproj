@@ -103,11 +103,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\ContrastCommand.cs" />
+    <Compile Include="Commands\EdgeDetectionCommand.cs" />
     <Compile Include="Commands\FlipCommand.cs" />
+    <Compile Include="Commands\ImpulseNoiseCommand.cs" />
     <Compile Include="Commands\LogCommand.cs" />
     <Compile Include="Commands\BlurCommand.cs" />
     <Compile Include="Commands\GrayScaleCommand.cs" />
     <Compile Include="Commands\NegateCommand.cs" />
+    <Compile Include="Commands\SobelEdgeDetectionCommand.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

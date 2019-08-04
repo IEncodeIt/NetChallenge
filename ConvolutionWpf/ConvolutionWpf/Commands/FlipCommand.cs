@@ -9,6 +9,8 @@ namespace ConvolutionWpf.Commands
     {
         private readonly Func<WriteableBitmap> _imageFactory;
 
+        public event Action<WriteableBitmap> OnImageChanged;
+
         public FlipCommand(Func<WriteableBitmap> imageFactory)
             : base(() => { })
         {

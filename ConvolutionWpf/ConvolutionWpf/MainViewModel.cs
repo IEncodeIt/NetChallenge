@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Windows;
 using System.Windows.Media.Imaging;
 using Catel.Data;
 using Catel.MVVM;
@@ -9,7 +8,7 @@ using Microsoft.Win32;
 
 namespace ConvolutionWpf
 {
-    public class MainViewModel: ViewModelBase
+    public class MainViewModel : ViewModelBase
     {
         public MainViewModel()
         {
@@ -23,8 +22,11 @@ namespace ConvolutionWpf
             ContrastCmd = new ContrastCommand(() => Image);
             FlipCmd = new FlipCommand(() => Image);
             NegateCmd = new NegateCommand(() => Image);
+            SobelEdgesCmd = new SobelEdgeDetectionCommand(() => Image);
+            ImpulseNoiseCmd = new ImpulseNoiseCommand(() => Image);
+            EdgesCmd = new EdgeDetectionCommand(() => Image);
 
-            EdgesCmd = new Command(() => { });
+            FlipCmd.OnImageChanged += img => Image = img;
         }
 
         private WriteableBitmap _originalImage;
@@ -37,7 +39,7 @@ namespace ConvolutionWpf
 
         public Command ContrastCmd { get; }
 
-        public Command FlipCmd { get; }
+        public FlipCommand FlipCmd { get; }
 
         public Command EdgesCmd { get; }
 
@@ -48,6 +50,10 @@ namespace ConvolutionWpf
         public Command SaveCmd { get; }
 
         public Command ResetCmd { get; }
+
+        public Command SobelEdgesCmd { get; }
+
+        public Command ImpulseNoiseCmd { get; }
 
         public static PropertyData ImagePathProperty = RegisterProperty("Image", typeof(WriteableBitmap));
 
@@ -71,8 +77,7 @@ namespace ConvolutionWpf
 
         private void ResetCommand()
         {
-            Image.WritePixels(new Int32Rect(0, 0, _originalImage.PixelWidth, _originalImage.PixelHeight), 
-                _originalImage.BackBuffer, _originalImage.BackBufferStride * _originalImage.PixelHeight,_originalImage.BackBufferStride, 0, 0);
+            Image = _originalImage.Clone();
         }
 
         private void SaveCommand()

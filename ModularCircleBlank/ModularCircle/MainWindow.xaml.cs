@@ -31,7 +31,7 @@ namespace ModularCircle
         private readonly Brush _pointBrush = Brushes.CornflowerBlue;
         private readonly Brush _lineBrush = Brushes.CornflowerBlue;
 
-        private const double _factor = 50;
+        private const double _factor = 150;
 
         public MainWindow()
         {
