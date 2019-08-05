@@ -23,7 +23,7 @@ namespace ConvolutionWpf.Commands
 
             int width = image.PixelWidth;
             int height = image.PixelHeight;
-            int pixelsCount = width * height;
+            int pixelsCount = width * height * 3;
 
             int min = 255;
             int max = 0;
@@ -58,7 +58,7 @@ namespace ConvolutionWpf.Commands
 
             for (int i = 1; i < 256; i++)
             {
-                cumHist[i] = hist[i - 1] + hist[i];
+                cumHist[i] = cumHist[i - 1] + hist[i];
             }
 
 
@@ -90,7 +90,7 @@ namespace ConvolutionWpf.Commands
                 }
 
             int aHigh = 255;
-            for (int i = 255; i <= 0; i--)
+            for (int i = 255; i >= 0; i--)
                 if (cumHist[i] <= pixelsCount * (1-p))
                 {
                     aHigh = i;
