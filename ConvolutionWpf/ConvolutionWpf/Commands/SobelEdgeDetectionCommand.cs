@@ -60,7 +60,7 @@ namespace ConvolutionWpf.Commands
             double[,] kernelNumbers = {
                 {-1.0, -2.0, -1.0},
                 {0, 0, 0},
-                {1.0, 0, 2.0}};
+                {1.0, 2.0, 1.0}};
 
             double[,] kernel = new double[kernelSize, kernelSize];
             for (int i = 0; i < kernelSize; i++)
