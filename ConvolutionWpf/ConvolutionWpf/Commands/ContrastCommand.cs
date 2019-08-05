@@ -55,6 +55,7 @@ namespace ConvolutionWpf.Commands
 
             //Cumulative histogram
             int[] cumHist = new int[256];
+            cumHist[0] = hist[0];
 
             for (int i = 1; i < 256; i++)
             {
